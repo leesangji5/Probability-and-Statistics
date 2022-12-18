@@ -1,6 +1,6 @@
 import random
 import matplotlib.pyplot as plt
-# 422160번당 1회
+# 433160번당 1회
 
 n = 43316000
 result = [0, 0, 0, 0, 0]
