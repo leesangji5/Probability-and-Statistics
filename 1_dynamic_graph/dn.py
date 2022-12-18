@@ -4,7 +4,7 @@ from drawnow import *
 
 fig = plt.figure(1)
 n = 100
-n_dice = 100
+n_dice = 600000
 num = [0, 0, 0, 0, 0, 0]
 count = 0
 
@@ -19,7 +19,6 @@ def show_plot():
     ]
     plt.bar(label, num, color='blue')
     plt.xlabel('Number')
-    plt.ylabel('Frequency')
     plt.axhline(y=count/6, color='r', linestyle='-')
 
 for i in range(n):

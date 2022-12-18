@@ -4,7 +4,7 @@ from drawnow import *
 
 fig = plt.figure(1, figsize=(10, 6))
 n = 100
-n_dice = 10
+n_dice = 3600
 num = [0]*11
 count = 0
 
@@ -24,7 +24,6 @@ def show_plot():
     ]
     plt.bar(label, num, color='blue')
     plt.xlabel('Number')
-    plt.ylabel('Frequency')
 
 for i in range(n):
     for j in range(n_dice):
