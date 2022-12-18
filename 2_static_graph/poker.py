@@ -1,7 +1,7 @@
 from random import randint
 import matplotlib.pyplot as plt
 
-n = 100000000
+n = 1000000
 a = []
 result = 0
 for i in range(n):

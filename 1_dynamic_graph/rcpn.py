@@ -3,11 +3,10 @@ import matplotlib.pyplot as plt
 from drawnow import *
 
 fig = plt.figure(1)
-label = ['Score', 'Tie', 'Lose']
 num = [0, 0, 0]
 n = 100
-n_rcp = 10000
-i = 0
+n_rcp = 10
+count = 0
 
 def rcp():
     user1 = randint(1, 3)
@@ -28,13 +27,19 @@ def rcp():
         num[0] += 1
 
 def show_plot():
+    label = [
+            'Score {0}%'.format(round(num[0]/count*100, 2)),
+            'Tie {0}%'.format(round(num[1]/count*100, 2)),
+            'Lose {0}%'.format(round(num[2]/count*100, 2))
+    ]
     plt.bar(label, num, color='blue')
     plt.xlabel('Number')
     plt.ylabel('Frequency')
-    plt.axhline(y=(n_rcp*(i+1))/3, color='r', linestyle='-')
+    plt.axhline(y=count/3, color='r', linestyle='-')
 
 for i in range(n):
     for j in range(n_rcp):
         rcp()
+        count += 1
     drawnow(show_plot)
 plt.show()
