@@ -63,34 +63,65 @@ std::vector<int> r_c_p(int n) {
     std::mt19937 gen(rd());
     std::uniform_int_distribution<int> dis(1, 3);
 
-    std::vector<int> resutl = { 0, 0, 0 };
+    std::vector<int> result = { 0, 0, 0 };
 
     for (int i = 0; i < n; i++) {
         int user1 = dis(gen);
         int user2 = dis(gen);
         if (user1 == user2) {
-            resutl[1] += 1;
+            result[1] += 1;
         }
         else if (user1 == 1 and user2 == 2) {
-            resutl[2] += 1;
+            result[2] += 1;
         }
         else if (user1 == 1 and user2 == 3) {
-            resutl[0] += 1;
+            result[0] += 1;
         }
         else if (user1 == 2 and user2 == 1) {
-            resutl[0] += 1;
+            result[0] += 1;
         }
         else if (user1 == 2 and user2 == 3) {
-            resutl[2] += 1;
+            result[2] += 1;
         }
         else if (user1 == 3 and user2 == 1) {
-            resutl[2] += 1;
+            result[2] += 1;
         }
         else {
-            resutl[0] += 1;
+            result[0] += 1;
         }
     }
-    return resutl;
+    return result;
+}
+
+std::vector<int> dice_sum(int n) {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> dis(1, 6);
+
+    std::vector<int> result = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    for (int i = 0; i < n; i++) {
+        result[dis(gen) + dis(gen) - 2] += 1;
+    }
+    for (int i = 0; i < result.size(); i++) {
+        std::cout << result[i] << " ";
+    }
+    std::cout << std::endl;
+    return result;
+}
+
+void for_dice_sum(int n, int for_n) {
+    std::vector<int> r = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    std::vector<int> ds;
+    for (int i = 0; i < for_n; i++) {
+        ds = dice_sum(n);
+        for (int j = 0; j < ds.size(); j++) {
+            r[j] += ds[j];
+        }
+    }
+    for (int i = 0; i < ds.size(); i++) {
+        std::cout << r[i] << " ";
+    }
+    std::cout << std::endl;
 }
 
 void for_poker(int n, int for_n) {
@@ -128,4 +159,5 @@ int main() {
     //for_poker(4331600, 100);
     //for_dice(60000000, 100);
     //for_rcp(60000000, 100);
+    for_dice_sum(100000000, 100);
 }
